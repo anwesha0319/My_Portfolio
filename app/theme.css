@@ -1,0 +1,200 @@
+:root {
+  --ink: #14121c;
+  --ink-2: #2a2540;
+  --text: #f1eef8;
+  --muted: #8b84a3;
+  --lavender: #b9a5ff;
+  --journey-line: #f1eef8;
+}
+
+html { 
+  background: var(--ink); 
+  color: var(--text); 
+  scroll-behavior: smooth; 
+}
+
+body { 
+  font-family: var(--font-body), system-ui, sans-serif; 
+}
+
+.display {
+  font-family: var(--font-display), var(--font-deva), var(--font-beng), Georgia, serif;
+  font-optical-sizing: auto;
+}
+
+:focus-visible { 
+  outline: 2px solid var(--lavender); 
+  outline-offset: 3px; 
+  border-radius: 4px; 
+}
+
+@keyframes signoff-in {
+  from { opacity: 0; transform: translateY(0.4em); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.signoff-in { 
+  animation: signoff-in 520ms cubic-bezier(0.2, 0.7, 0.2, 1) both; 
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .signoff-in { animation: none; }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Folder card animations */
+.ease-folder {
+  transition-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Button focus styles */
+.folder-button:focus {
+  outline: none;
+}
+
+.folder-button:focus-visible .focus-outline {
+  opacity: 1;
+}
+
+/* Resting state - papers */
+.paper-1 {
+  transform: translate(-3%, -10%) rotate(-4deg);
+}
+
+.paper-2 {
+  transform: translate(0%, -6%) rotate(-1deg);
+}
+
+.paper-3 {
+  transform: translate(3%, -3%) rotate(2deg);
+}
+
+/* Hover/focus/open state */
+@media (hover: hover) {
+  .folder-button:is(:hover, :focus-visible, [data-folder-state="open"]) .paper-1 {
+    transform: translate(-5%, -34%) rotate(-9deg);
+  }
+
+  .folder-button:is(:hover, :focus-visible, [data-folder-state="open"]) .paper-2 {
+    transform: translate(-1%, -26%) rotate(-3deg);
+  }
+
+  .folder-button:is(:hover, :focus-visible, [data-folder-state="open"]) .paper-3 {
+    transform: translate(4%, -17%) rotate(4deg);
+  }
+
+  .folder-button:is(:hover, :focus-visible, [data-folder-state="open"]) .front-panel {
+    transform: rotateX(-12deg) translateY(2px);
+  }
+
+  .folder-button:is(:hover, :focus-visible, [data-folder-state="open"]) .folder-wrapper {
+    filter: drop-shadow(0 24px 28px rgba(0, 0, 0, 0.45));
+  }
+}
+
+/* Touch devices - halfway pose */
+@media (hover: none) {
+  .paper-1 {
+    transform: translate(-4%, -22%) rotate(-6deg);
+  }
+
+  .paper-2 {
+    transform: translate(-1%, -16%) rotate(-2deg);
+  }
+
+  .paper-3 {
+    transform: translate(3%, -10%) rotate(3deg);
+  }
+}
+
+/* Default shadow */
+.folder-wrapper {
+  filter: drop-shadow(0 18px 22px rgba(0, 0, 0, 0.45));
+}
+
+/* Press feedback */
+.folder-button:active .folder {
+  transform: scale(0.985);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .paper-1,
+  .paper-2,
+  .paper-3,
+  .front-panel,
+  .folder-wrapper {
+    transition: none !important;
+  }
+
+  .folder-button:is(:hover, :focus-visible, [data-folder-state="open"]) .front-panel {
+    transform: rotateX(0) translateY(0);
+  }
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(22px)) {
+  .front-panel {
+    background: linear-gradient(160deg, rgba(58,52,86,0.95), rgba(30,26,48,0.97) 70%) !important;
+    backdrop-filter: none !important;
+  }
+}
+
+/* Custom scrollbar for project scroll */
+.overflow-x-auto::-webkit-scrollbar {
+  height: 8px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background: var(--ink-2);
+  border-radius: 4px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb:hover {
+  background: var(--lavender);
+}
+
+/* Footer customization - site-footer scope */
+.site-footer .fcf-haze {
+  display: none !important;
+}
+
+.site-footer .fcf-word {
+  visibility: hidden;
+  height: clamp(200px, 17vw, 340px);
+  overflow: hidden;
+  margin-top: clamp(24px, 3vw, 48px);
+}
+
+/* Prevent creatures from leaving the stage (disable re-drop loop) */
+.site-footer .fcf-stage {
+  overflow: hidden;
+  clip-path: inset(0 0 0 0);
+}
