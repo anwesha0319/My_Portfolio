@@ -5,11 +5,11 @@ import CodeBackground from "@/components/CodeBackground";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Anwesha Chatterjee | AI engineer and full-stack developer",
-  description: "Portfolio of Anwesha Chatterjee. AI engineer and full-stack developer building RAG systems, machine learning projects, and thoughtful interfaces.",
+  title: "Anwesha Chatterjee | Computer Science Engineer & Full-stack Developer",
+  description: "Portfolio of Anwesha Chatterjee. Computer Science Engineer and Full-stack Developer building RAG systems, machine learning projects, and thoughtful interfaces.",
   openGraph: {
-    title: "Anwesha Chatterjee | AI engineer and full-stack developer",
-    description: "Portfolio of Anwesha Chatterjee. AI engineer and full-stack developer building RAG systems, machine learning projects, and thoughtful interfaces.",
+    title: "Anwesha Chatterjee | Computer Science Engineer & Full-stack Developer",
+    description: "Portfolio of Anwesha Chatterjee. Computer Science Engineer and Full-stack Developer building RAG systems, machine learning projects, and thoughtful interfaces.",
   },
 };
 
